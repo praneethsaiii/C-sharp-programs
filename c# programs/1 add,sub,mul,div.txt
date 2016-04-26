@@ -1,0 +1,81 @@
+prg 1 (cs-2)
+
+console side
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ConsoleApplication116.WebApplication80;
+namespace ConsoleApplication116
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            WebService1 wb = new WebService1();
+           // Console.WriteLine(wb.MathService());
+            Console.WriteLine("Added Value is :");
+            Console.WriteLine(wb.Add(24, 22));
+            Console.WriteLine("Subtracted Value is :");
+            Console.WriteLine(wb.Subtract(24, 26));
+            Console.WriteLine("Multiplied Value is :");
+            Console.WriteLine(wb.Multiply(12, 3));
+            Console.WriteLine("Divided Value is :");
+            Console.WriteLine(wb.Divide(22, 2));
+            Console.ReadLine();
+
+        }
+    }
+}
+
+web side
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace WebApplication80
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public string HelloWorld()
+        {
+            return "Hello World";
+        }
+        [WebMethod]
+        public int Add(int a, int b)
+        {
+            return (a + b);
+        }
+        [WebMethod]
+        public System.Single Subtract(System.Single A, System.Single B)
+        {
+            return (A - B);
+        }
+        [WebMethod]
+        public System.Single Multiply(System.Single A, System.Single B)
+        {
+            return A * B;
+        }
+        [WebMethod]
+        public System.Single Divide(System.Single A, System.Single B)
+        {
+            if (B == 0)
+                return -1;
+            return Convert.ToSingle(A / B);
+        }
+
+    }
+}

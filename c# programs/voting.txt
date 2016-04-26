@@ -1,0 +1,63 @@
+//voting system
+//web method
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace WebApplication14
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public string HelloWorld()
+        {
+            return "Hello World";
+        }
+        [WebMethod]
+        public string vote(string na, int age)
+        {
+            string m="";
+            if (((na != "INDIA") || (na != "india")) && (age < 18))
+            {
+                m = "you are not eligible";
+            }
+            else
+            {
+                m = "you are eligible";
+            }
+            return m;
+        }
+    }
+}
+//console
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ConsoleApplication6.WebApplication14;
+namespace ConsoleApplication6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            WebService1 ws = new WebService1();
+            int age=int.Parse(Console.ReadLine());
+            string na=Console.ReadLine();
+            Console.WriteLine(ws.vote(na,age));
+            Console.ReadKey();
+        }
+    }
+}

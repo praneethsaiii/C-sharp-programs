@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ConsoleApplication31.WebApplication8;
+namespace ConsoleApplication31
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            WebService1 WS = new WebService1();
+            Console.WriteLine("cel to far");
+            Console.WriteLine(WS.cel_to_far(37));
+            Console.WriteLine("far to cel");
+            Console.WriteLine(WS.far_to_cel(98.6));
+            Console.WriteLine("enter cel value to convert it to far");
+            double c = int.Parse(Console.ReadLine());
+            Console.WriteLine("tem in far is ");
+            Console.WriteLine(WS.cel_to_far(c));
+            Console.ReadKey();
+        
+        }
+    }
+}

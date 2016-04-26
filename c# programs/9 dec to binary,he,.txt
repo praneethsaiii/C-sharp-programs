@@ -1,0 +1,232 @@
+//console side
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Services;
+namespace cyc2_con9
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //int n;
+            cyc2_web9.WebService1 on = new cyc2_web9.WebService1();
+            Console.WriteLine("Enter a number which you want to convert to binary , hexadecimal and octa");
+            int n1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Eneter choice 1-binary 2-octa , 3-hexadecimal");
+            int ch = int.Parse(Console.ReadLine());
+            int v = 0;
+            while (ch!=4)
+            {
+                switch (ch)
+                {
+
+                    case 1:
+                        Console.WriteLine("Binary : "+on.decimal_to_binary(n1));
+                        break;
+                    case 2:
+                        Console.WriteLine("Octal : "+on.decimal_to_octa(n1));
+                        break;
+                    case 3:
+                        Console.WriteLine("Hexadecimal : "+on.decimal_to_hexa(n1));
+                        break;
+                    default:
+                        Console.WriteLine("Invlid Choice");
+                        break;
+
+                }
+                v++;
+
+
+                if (v > 0)
+                {
+                    Console.WriteLine("Enter a number which you want to convert to binary , hexadecimal and octa");
+                    n1 = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Eneter choice 1-binary 2-octa , 3-hexadecimal");
+                    ch = int.Parse(Console.ReadLine());
+
+                }
+            }
+            if (ch == 4)
+                Console.WriteLine("Quitted");
+        }
+    }
+}
+
+
+
+//web side
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace cyc2_web9
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public string decimal_to_binary(int n)
+        {
+            int n1;
+            int r, i, j = 0;
+            int c = 0;
+            String q = "";
+            n1 = n;
+            int[] a = new int[100];
+            if (n1 < 2)
+            {
+                q = q + n1;
+              
+            }
+            while (n1 >= 2)
+            {
+                r = n1 % 2;
+                a[j] = r;
+                j++;
+                n1 = n1 / 2;
+                if (n1 <= 1)
+                {
+                    a[j] = n1;
+                    for (i = j; i >= 0; i--)
+                    {
+                        q += a[i].ToString();
+                    }
+                }
+            }
+            return q;
+        }
+        [WebMethod]
+        public String decimal_to_octa(int n)
+        {
+            int  n1;
+            int r, i, j = 0;
+           // n = 1002;
+            int c = 0;
+            String q = "";
+            n1 = n;
+            int[] a = new int[100];
+            if (n1 < 8)
+            {
+                q = q + n1;
+            }
+            while (n1 >= 8)
+            {
+                r = n1 % 8;
+                a[j] = r;
+                j++;
+                n1 = n1 / 8;
+                if (n1 <= 7)
+                {
+                    //       j++;
+                    a[j] = n1;
+                    for (i = j; i >= 0; i--)
+                    {
+                        q += a[i].ToString();
+                    }
+                }
+            }
+
+            return q;
+        }
+
+        [WebMethod]
+        public String decimal_to_hexa(int n)
+        {
+            int  n1;
+            int r, i, j = 0;
+            //n = 1002;
+            int c = 0;
+            String q = "";
+            n1 = n;
+            int[] a = new int[100];
+            if (n1 < 16)
+            {
+                if (n1 < 10)
+                    q = q + n1;
+                else
+                {
+                    switch (n1)
+                    {
+                        case 10:
+                            q += "A";
+                            break;
+
+                        case 11:
+                            q += "B";
+                            break;
+                        case 12:
+                            q += "C";
+                            break;
+                        case 13:
+                            q += "D";
+                            break;
+                        case 14:
+                            q += "E";
+                            break;
+                        case 15:
+                            q += "F";
+                            break;
+
+                    }
+                }
+            }
+            while (n1 >= 16)
+            {
+                r = n1 % 16;
+                a[j] = r;
+                j++;
+                n1 = n1 / 16;
+                if (n1 <= 15)
+                {
+                    a[j] = n1;
+                    for (i = j; i >= 0; i--)
+                    {
+                        if (a[i] < 10)
+                            q = q + a[i];
+                        else
+                        {
+                            switch (a[i])
+                            {
+                                case 10:
+                                    q += "A";
+                                    break;
+
+                                case 11:
+                                    q += "B";
+                                    break;
+                                case 12:
+                                    q += "C";
+                                    break;
+                                case 13:
+                                    q += "D";
+                                    break;
+                                case 14:
+                                    q += "E";
+                                    break;
+                                case 15:
+                                    q += "F";
+                                    break;
+
+                            }
+                        }
+                    }
+                }
+            }
+            return q;
+        }
+    }
+    }
+

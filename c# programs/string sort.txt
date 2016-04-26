@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace string_sort
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public string[] string_sort(string[] a,int n)
+        {
+            int i, j;
+            Array.Sort(a);
+
+            return a;
+        }
+    }
+}
+//client
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace string_sort_client
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, j;
+            string_sort.WebService1 ob = new string_sort.WebService1();
+            Console.WriteLine("Enter number of strings ");
+            int n = int.Parse(Console.ReadLine());
+
+            string[] a = new string[n];
+            for (i=0;i< n;i++)
+            {
+                a[i] = Console.ReadLine();
+
+            }
+            string[] b = ob.string_sort(a,n);
+            Console.WriteLine("The sorted string array :");
+            for(i=0;i< n;i++)
+            Console.WriteLine(b[i]);
+            Console.ReadLine();
+        }
+    }
+}

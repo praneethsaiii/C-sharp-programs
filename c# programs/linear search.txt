@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace WebApplication13
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public string HelloWorld()
+        {
+            return "Hello World";
+        }
+      
+        [WebMethod]
+        public string secmax(int[] a, int s,int n)
+        {
+            int i, j;
+            string m = " not found";
+                for (i = 0; i < n; i++)
+                {
+
+                    if (s == a[i])
+                    {
+                        m = "found";
+
+                    }       
+                }
+            
+             
+            return m;
+        }
+        
+    }
+}
+//console
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ConsoleApplication12.WebApplication13;
+
+namespace ConsoleApplication12
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i;
+            WebService1 ob = new WebService1();
+            Console.WriteLine("Enter the size n:");
+            int n = int.Parse(Console.ReadLine());
+            int[] a = new int[n];
+            Console.WriteLine("Enter the elements of array:");
+            for (i = 0; i < n; i++)
+            {
+                    a[i] = int.Parse(Console.ReadLine());
+                
+            }
+            Console.WriteLine("Enter the  search element:");
+            int s = int.Parse(Console.ReadLine());
+            string b;
+            b = ob.secmax(a,s,n);
+            Console.WriteLine("The sorted array is :");
+            Console.WriteLine(b);
+            Console.ReadKey();
+
+        }
+    }
+}

@@ -1,0 +1,106 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Services;
+namespace cyc2_con4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            cyc2_web4.WebService1 ob1 = new cyc2_web4.WebService1();
+            Console.WriteLine("Enter string ");
+            String s = Console.ReadLine();
+            Console.WriteLine("The sorted string is :"+ob1.sort_string(s));
+            Console.WriteLine("the ocuurences of a alphabets ");
+            int i,j;
+            j = 0;
+            int[] b = new int[100];
+            b = ob1.no_of_occurence(s);
+            for (i = 65; i <= 90; i++)
+            {
+
+                Console.WriteLine((char)i + "  =  " + b[i]);
+                j++;
+            }
+            Console.ReadLine();
+
+        }
+    }
+}
+
+//web
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace cyc2_web4
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public String sort_string(String a)
+        {
+            a = a.ToUpper();
+            int i, j;
+            char temp;
+            char[] s1 = a.ToCharArray();
+
+            for (i = 0; i < a.Length; i++)
+            {
+                for (j = i + 1; j < a.Length; j++)
+                {
+                    if (s1[i] > s1[j])
+                    {
+                        temp = s1[i];
+                        s1[i] = s1[j];
+                        s1[j] = temp;
+                    }
+                }
+            }
+            /* Console.WriteLine("The sorted string is : ");
+             for (i = 0; i < s1.Length; i++)
+                 Console.Write(s1[i]);
+             */
+
+            String a2 = new String(s1);
+            return a2;
+        }
+        [WebMethod]
+        public int[] no_of_occurence(String s)
+        {
+            int[] a = new int[100];
+            //Console.WriteLine("Enter String ");
+            //String s = Console.ReadLine();
+            s = s.ToUpper();
+            int i, j;
+            for (i = 0; i < 100; i++)
+                a[i] = 0;
+            for (i = 0; i < s.Length; i++)
+            {
+                for (j = 65; j <= 90; j++)
+                {
+                    if (s[i] == j)
+                    {
+                        a[j]++;
+                    }
+                }
+            }
+            return a;
+        }
+
+    }
+}

@@ -1,0 +1,84 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace WebApplication14
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        
+        [WebMethod]
+        public int[] selection(int[] a, int n)
+        {
+            int tmp, min_key;
+
+            for (int i = 0; i<n; i++)
+            {
+                min_key = i;
+
+                for (int j = i + 1; j <n; j++)
+                {
+                    if (a[j] < a[min_key])
+                    {
+                        min_key = j;
+                    }
+                }
+
+                tmp = a[min_key];
+                a[min_key] = a[i];
+                a[i] = tmp;
+            }
+            return a;
+        }
+
+    }
+}
+
+
+// console
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+//using ConsoleApplication13.WebApplication14;
+
+namespace ConsoleApplication13
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            WebApplication14.WebService1 ob = new WebApplication14.WebService1();
+            Console.WriteLine("enter the size of array");
+            int n = int.Parse(Console.ReadLine());
+            int[] a = new int[n];
+            Console.WriteLine("enter array elements");
+            for (int i = 0; i < n; i++)
+            {
+                a[i] = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine("selection output");
+            int[] c = new int[n];
+            c= ob.sort(a, n);
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(c[i]);
+
+            }
+                Console.ReadLine();
+        }
+    }
+}

@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace WebApplication16
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public string HelloWorld()
+        {
+            return "Hello World";
+        }
+
+        [WebMethod]
+        public string day(int days)
+        {
+            int year = days / 365;
+            if (days >= 365)
+            {
+                days = days - (year * 365);
+            }
+            int weeks = days / 7;
+            days = days - (weeks * 7);
+            int d = days;
+            String a = "Years=" + year + ",weeks=" + weeks + ",days=" + d;
+            return a;
+        }
+
+        
+    }
+}
+//console
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication16
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            WebApplication16.WebService1 ob = new WebApplication16.WebService1();
+            Console.WriteLine("Enter total days=");
+            int x = int.Parse(Console.ReadLine());
+            Console.WriteLine(ob.day(x));
+                      Console.ReadLine();
+        }
+    }
+}

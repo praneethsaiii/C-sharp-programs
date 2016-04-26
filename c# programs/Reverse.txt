@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication8
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a;
+            int rev=0;
+            Console.WriteLine("Enter a number to reverse");
+            a = int.Parse(Console.ReadLine());
+            while (a != 0)
+            {
+                rev = rev * 10;
+                rev = rev + a % 10;
+                a = a / 10;
+
+                
+            }
+            Console.WriteLine("Value after reversing is:" + rev);
+            Console.ReadLine();
+
+        }
+    }
+}

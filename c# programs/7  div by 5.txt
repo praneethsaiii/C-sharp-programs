@@ -1,0 +1,97 @@
+web application
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace WebApplication93
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+        [WebMethod]
+        public int[] ndiv(int n)
+        {
+            int[] a = new Int32[100];
+
+            int j = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 5 == 0)
+                {
+                    a[j] = i;
+                    j++;
+                }
+            }
+
+
+            return a;
+        }
+        [WebMethod]
+        public int[] div(int n)
+        {
+            int[] a = new Int32[100];
+            int[] c = new Int32[2];
+            int j=0;
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 5 == 0)
+                {
+                    a[j]=i;
+                    j++;
+                }
+            }
+            c[0] = a[0];
+            c[1] = a[99];
+            return c;
+        }
+        
+    }
+}
+
+console
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ConsoleApplication133.WebApplication93;
+
+namespace ConsoleApplication133
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            WebService1 ws = new WebService1();
+            int n;
+            n = int.Parse(Console.ReadLine());
+            Console.WriteLine("The numbers divisible by 5 upto 500 are");
+            Console.WriteLine(ws.div(n));
+            int[] y = ws.ndiv(n);
+            for (int i = 0; i < y.Length; i++)
+            {
+                Console.WriteLine(y[i]);
+            }
+            Console.WriteLine("the smallest and largest of the divisible nums are"); 
+            int[] z = ws.div(n);
+            for (int i = 0; i < z.Length; i++)
+            {
+                Console.WriteLine(z[i]);
+            }
+            
+            
+            Console.ReadKey();
+        }
+    }
+}

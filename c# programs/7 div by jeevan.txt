@@ -1,0 +1,79 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Services;
+
+namespace cyc2_con7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            cyc2_web7.WebService1 ob = new cyc2_web7.WebService1();
+            Console.WriteLine("Enter start and end to find the numbers divisible by 5 and the smallest and the greatest among them ");
+            int a, b;
+            a = int.Parse(Console.ReadLine());
+            b = int.Parse(Console.ReadLine());
+            Console.WriteLine(ob.div_by_5(a,b));
+        }
+    }
+}
+
+//web side
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace cyc2_web7
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public String div_by_5(int a,int b)
+        {
+            int[] p = new int[500];
+            int i, j=0, temp;
+            for (i = a; i <= b; i++)
+            {
+                if (i % 5 == 0)
+                { 
+                p[j] = i;
+                    j++;
+                }
+            }
+            int temp1 = p[0];
+            int temp2 = p[0];
+            for(i=0;i<j;i++)
+            {
+                if (p[i] <temp2)
+                {
+                    temp2 = p[i];
+                }
+                if(p[i]> temp1)
+                {
+                    temp1 = p[i];
+                }
+            }
+            String s="";
+            for(i=0;i<j;i++)
+            {
+                s = s+" \n"+ p[i].ToString();
+            }
+            s = s + "\n  " + "Smallest number: " + temp2 + "  \n" + "Biggest Number: " + temp1;
+            return "The numbers divisible by 5 from "+a+"to"+b+" are :"+s;
+        }
+    }
+}

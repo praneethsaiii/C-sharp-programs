@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            float a;
+            int b,d;
+            double c;
+
+            Console.WriteLine("Enter a numbers for a,b,c,d respectively :");
+            a = float.Parse(Console.ReadLine());
+            b = int.Parse(Console.ReadLine());
+            c = double.Parse(Console.ReadLine());
+            d = int.Parse(Console.ReadLine());
+            if (a > b && a > c && a > d)
+            {
+                Console.WriteLine("a is greater");
+                Console.ReadLine();
+            }
+            if (b > a && b > c && b > d)
+            {
+                Console.WriteLine("b is greater");
+                Console.ReadLine();
+            }
+            if (c > a && c > b && c > d)
+            {
+                Console.WriteLine("c is greater");
+                Console.ReadLine();
+            }
+            if (d > a && d > b && d > c)
+            {
+                Console.WriteLine("d is greater");
+                Console.ReadLine();
+            }
+
+        }
+    }
+}

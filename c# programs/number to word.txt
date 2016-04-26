@@ -1,0 +1,125 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace WebApplication15
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public string HelloWorld()
+        {
+            return "Hello World";
+            
+        }
+        [WebMethod]
+        public string word(int n)
+        {
+            int i = 0,r=0,a=0;
+            string m = "";
+            while (n > 0)
+            {
+                i = n % 10;
+                r = r * 10 + i;
+                n = n / 10;
+            }
+            while (r > 0)
+            {
+                a = r % 10;
+                switch(a)
+                {
+                    case 0:
+                        {
+                            m = m + " zero";
+                            break;
+                        }
+
+                    case 1:
+                        {
+                            m = m + " one";
+                            break;
+                        }
+                    case 2:
+                        {
+                            m = m + " two";
+                            break;
+                        }
+                    case 3:
+                        {
+                            m = m + " three";
+                            break;
+                        }
+
+                    case 4:
+                        {
+                            m = m + " four";
+                            break;
+                        }
+                    case 5:
+                        {
+                            m = m + " five";
+                            break;
+                        }
+                    case 6:
+                        {
+                            m = m + " six";
+                            break;
+                        }
+                    case 7:
+                        {
+                            m = m + " seven";
+                            break;
+                        }
+                    case 8:
+                        {
+                            m = m + "eight";
+                            break;
+                        }
+                    case 9:
+                        {
+                            m = m + "nine";
+                            break;
+                        }
+                       
+
+                }
+                r = r / 10;
+            }
+            return m;
+        }
+    }
+}
+//console application
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ConsoleApplication15.WebApplication15;
+
+namespace ConsoleApplication15
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            WebService1 ws = new WebService1();
+            Console.WriteLine("enter the number to convert into words:");
+            int n = int.Parse(Console.ReadLine());
+            string m=ws.word(n);
+            Console.WriteLine("entered number's word is :"+m);
+            Console.ReadKey();
+        }
+    }
+}

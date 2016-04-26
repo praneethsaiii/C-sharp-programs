@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace program8
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, n1, r, i,sum = 0, f,f1=1;
+            int ch;
+            int f2 = 1,n2,j;
+            double sum2 =1,x;
+            Console.WriteLine("Enter choice ch");
+            ch = (Convert.ToInt32(Console.ReadLine()));
+            switch(ch)
+            {
+                case 1:
+                    Console.WriteLine("Enter a number to fimd the sum of the digits ");
+                    n = Convert.ToInt32(Console.ReadLine());
+                    n1 = n;
+                    while(n1>0)
+                    {
+                        r = n1 % 10;
+                        sum = sum + r;
+                        n1 = n1 / 10;
+                    }
+                    Console.WriteLine("the sum of digits of a number "+n+ "  is  "+sum);
+                    break;
+                case 2:
+                    Console.WriteLine("Enter a number to find the factorial of a number  ");
+                    f = Convert.ToInt32(Console.ReadLine());
+                    for (i=1;i<=f;i++)
+                    {
+                        f1=f1*i;
+                    }
+                    Console.WriteLine("The factorial of a number "+f+" is "+f1 );
+                    break;
+                case 3:
+                    Console.WriteLine("Enter  x:");
+                    x = Double.Parse(Console.ReadLine());
+                    Console.WriteLine("Enter the limit of the sine series ");
+                    n2 = Convert.ToInt32(Console.ReadLine());
+                    x = x * (3.14) / 180;
+                    sum2 = x;
+                    Console.WriteLine("sum2="+sum2);
+                    for(i=2;i<=n2;i++)
+                    {
+                        f2 = 1;
+                        for(j=((2* i)-1);j>=1;j--)
+                        {
+                            f2 = f2 * j;
+                        }
+                        int y = (2 * i) - 1;
+
+                        sum2 = sum2 + ((Math.Pow(-1,y))*((Math.Pow(x,y))))/f2;
+                    }
+                    Console.WriteLine("the sum of sine series is "+sum2);
+                    break;
+            }
+            Console.ReadLine();
+        }
+
+    }
+}

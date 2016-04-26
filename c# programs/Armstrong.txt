@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, n1, rem, num = 0;
+            Console.WriteLine("Enter a value for armstrong");
+            n = int.Parse(Console.ReadLine());
+            n1 = n;
+            while (n1 != 0)
+            {
+                rem = n1 % 10;
+                num += rem * rem * rem;
+                n1 = n1 / 10;
+            }
+            if (num == n)
+            {
+                Console.WriteLine("armstrong number" + n);
+                Console.ReadLine();
+            }
+            if (num!=n)
+            {
+                Console.WriteLine(" not armstrong number" + n);
+                Console.ReadLine();
+            }
+
+
+        }
+    }
+}

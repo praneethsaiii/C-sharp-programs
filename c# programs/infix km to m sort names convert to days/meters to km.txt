@@ -1,0 +1,39 @@
+/*
+ * C# Program to Perform Conversions of Meter to Kilometer and viceversa
+ */
+using System;
+class Program
+{
+    static void Main()
+    {
+        double m1 = 200;
+        Console.WriteLine("Meter   ::    Kilometer");
+        double k1 = ConvertDistance.cMtK(100);
+        Console.WriteLine("{0}     ::    {1}", m1, k1);
+        double m4 = 310.7;
+        double k4 = ConvertDistance.cMtK(4200.7);
+        Console.WriteLine("{0}   ::     {1}", m4, k4);
+        double k3 = 500;
+        Console.WriteLine();
+        Console.WriteLine("Kilometer     ::     Meter");
+        double m3 = ConvertDistance.cKtM(500);
+        Console.WriteLine("{0}           ::     {1}", k3, m3);
+        double k2 = 321.9;
+        double m2 = ConvertDistance.cKtM(451.9);
+        Console.WriteLine("{0}         ::    {1}", k2, m2);
+        Console.Read();
+    }
+}
+ 
+public static class ConvertDistance
+{
+    public static double cMtK(double miles)
+    {
+        return miles * 1.609344;
+    }
+ 
+    public static double cKtM(double kilometers)
+    {
+        return kilometers * 0.621371192;
+    }
+}

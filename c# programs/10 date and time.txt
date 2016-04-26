@@ -1,0 +1,51 @@
+//console side
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Services;
+
+namespace cyc2_con10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            cyc2_web10.WebService1 ob = new cyc2_web10.WebService1();
+            Console.WriteLine(" Current Date And Time ");
+            Console.WriteLine(ob.date_time());
+        }
+    }
+}
+// web side
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace cyc2_web10
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public String date_time()
+        {
+            //DateTime d = DateTime.Now;
+            //String.Format("{dd/MM/yy HH:mm:ss}",d);
+           String d= DateTime.Now.ToString(" MM/dd/yy"+ "      "  +"hh:mm:ss");
+           
+            return d;
+        }
+    }
+}

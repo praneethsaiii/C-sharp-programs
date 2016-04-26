@@ -1,0 +1,209 @@
+web
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace WebApplication59
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public int sum(int[,] a,int r,int c)
+        {
+            int i, j;
+            int sum=0;
+            for (i = 0; i < r; i++)
+            {
+                for (j = 0; j < c; j++)
+                {
+                    sum = sum + a[i,j];
+                }
+            }
+            return sum;
+        }
+        [WebMethod]
+        public int dsum(int[,] a, int r, int c)
+        {
+            int i, j;
+            int sum = 0;
+            for (i = 0; i < r; i++)
+            {
+                for (j = 0; j < c; j++)
+                {
+                    if (i == j)
+                    {
+                        sum = sum + a[i, j];
+                    }
+                }
+            }
+            return sum;
+        }
+        [WebMethod]
+        public int[,] id(int r, int c)
+        {
+            int i, j;
+            int sum = 0;
+            int[,] a = new int[r, c];
+            for (i = 0; i < r; i++)
+            {
+                for (j = 0; j < c; j++)
+                {
+                    if (i == j)
+                    {
+                        a[i, j] = 1;
+                    }
+                    else
+                    {
+                        a[i, j] = 0;
+                    }
+                }
+            }
+            return a;
+        }
+
+       
+            
+           [WebMethod]
+        public int[] rowsum(int[,] a,int r, int c)
+        {
+            int i, j;
+            int[] sum = new int[r];
+            
+            for (i = 0; i < r; i++)
+            {
+                sum[i] = 0;
+                for (j = 0; j < c; j++)
+                {
+                    sum[i] = sum[i] + a[i,j];
+                }
+
+            }
+            return sum;
+        }
+
+           [WebMethod]
+           public int[] colsum(int[,] a, int r, int c)
+           {
+               int i, j;
+               int[] sum = new int[r];
+
+               for (i = 0; i < r; i++)
+               {
+                   sum[i] = 0;
+                   for (j = 0; j < c; j++)
+                   {
+                       sum[i] = sum[i] + a[j,i];
+                   }
+
+               }
+               return sum;
+           }
+          
+        [WebMethod]
+        public int[,] trans(int[,] a, int r, int c)
+        {
+            int i, j;
+            int[] sum = new int[c];
+            int[,] b = new int[c, r];
+            for (i = 0; i < r; i++)
+            {
+                
+                for (j = 0; j < c; j++)
+                {
+                    b[j,i]=a[i,j];
+                }
+            }
+            return b;
+           
+        }
+    }
+}
+
+
+console
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ConsoleApplication17
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           WebApplication59.WebService1 ws = new WebApplication59.WebService1();
+           Console.WriteLine("enter num of rows and cols");
+           int i,j;
+            int r=int.Parse( Console.ReadLine());
+           int c = int.Parse(Console.ReadLine());
+            int[,] a=new int[r,c];
+          Console.WriteLine("enter the elemnts in matrix");
+            for(i=0;i<r;i++)
+            {
+                for(j=0;j<c;j++)
+                {
+                    a[i,j]=int.Parse(Console.ReadLine());
+                }
+            }
+            /*for (i = 0; i < r; i++)
+            {
+                for (j = 0; j < c; j++)
+                {
+                    Console.Write(a[i,j]+" ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("sum of all elements is"+ws.sum(a,r,c));
+            Console.WriteLine("sum of diagonal elements is" + ws.dsum(a, r, c));*/
+
+            for (i = 0; i < r; i++)
+            {
+                for (j = 0; j < c; j++)
+                {
+                    Console.Write(a[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            int[] sum1 = ws.rowsum(a, r, c);
+            Console.WriteLine("sum of rows is");
+            for (i = 0; i < r; i++)
+            {
+                Console.WriteLine(sum1[i]);
+            }
+            int[] sum2 = ws.colsum(a,r, c);
+           Console.WriteLine("sum of cols is");
+            for (i = 0; i < c; i++)
+            {
+                    Console.Write(sum2[i]+"   ");
+            }
+            Console.WriteLine();
+            int[,] b = ws.trans(a, r, c);
+            for (i = 0; i < c; i++)
+            {
+                for (j = 0; j < r; j++)
+                {
+                    Console.Write(b[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.ReadKey();
+        }
+    }
+}

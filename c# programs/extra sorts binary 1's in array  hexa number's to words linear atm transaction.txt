@@ -1,0 +1,342 @@
+// binary to decimal_val 
+ using System;
+using System.Collections.Generic;
+using System.Text;
+ 
+namespace Program
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num, binary_val, decimal_val = 0, base_val = 1, rem;
+            Console.Write("Enter a Binary Number(1s and 0s) : ");
+            num = int.Parse(Console.ReadLine()); /* maximum five digits */
+            binary_val = num;
+            while (num > 0)
+            {
+                rem = num % 10;
+                decimal_val = decimal_val + rem * base_val;
+                num = num / 10 ;
+                base_val = base_val * 2;
+            }
+            Console.Write("The Binary Number is : "+binary_val);
+            Console.Write("\nIts Decimal Equivalent is : "+decimal_val);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+// 1's in entered array
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+ 
+namespace ConsoleApplication16
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int m, count = 0;
+            Console.WriteLine("Enter the Limit : ");
+            m = int.Parse(Console.ReadLine());
+            int[] a = new int[m];
+            Console.WriteLine("Enter the Numbers :");
+            for (int i = 0; i < m; i++)
+            {
+                a[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            foreach (int o in a)
+            {
+                if (o == 1)
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine("Number of 1's in the Entered Number : ");
+            Console.WriteLine(count);
+            Console.ReadLine();
+        }
+    }
+}
+// search elements in array
+using System;
+using System.IO;
+class Program
+{
+    static void Main()
+    {
+ 
+        string[] array1 = { "cat", "dogs", "donkey", "camel" };
+        string v1 = Array.Find(array1,
+            element => element.StartsWith("cam", StringComparison.Ordinal));
+        string v2 = Array.Find(array1,
+            element => element.Length == 3);
+        Console.WriteLine("The Elemnt that Starts with 'Cam' is : " +v1);
+        Console.WriteLine("3 Letter word in the Array is : " +v2);
+        Console.ReadLine();
+    }
+}
+
+
+//bubble sort
+using System;
+class bubblesort
+{
+        static void Main(string[] args)
+        {
+            int[] a = { 3, 2, 5, 4, 1 };  
+            int t;
+            Console.WriteLine("The Array is : ");
+            for (int i = 0; i < a.Length; i++)
+            {
+                Console.WriteLine(a[i]);
+            }
+            for (int j = 0; j <= a.Length - 2; j++)
+            {
+                for (int i = 0; i <= a.Length - 2; i++)
+                {
+                    if (a[i] > a[i + 1])
+                    {
+                        t = a[i + 1];
+                        a[i + 1] = a[i];
+                        a[i] = t;
+                    }
+                }
+            }
+            Console.WriteLine("The Sorted Array :");
+            foreach (int aray in a)                         
+                Console.Write(aray + " ");
+            Console.ReadLine();
+        }
+    }
+	
+	//selection sort
+	using System;
+class Program
+{
+    static void Main(string[] args)
+    {
+        int array_size = 10;
+        int[] array = new int[10] { 100, 50, 20, 40, 10, 60, 80, 70, 90, 30 };
+        Console.WriteLine("The Array Before Selection Sort is: ");
+        for (int i = 0; i < array_size; i++)
+        {
+            Console.WriteLine(array[i]);
+        }
+        int tmp, min_key;
+ 
+        for (int j = 0; j < array_size - 1; j++)
+        {
+            min_key = j;
+ 
+            for (int k = j + 1; k < array_size; k++)
+            {
+                if (array[k] < array[min_key])
+                {
+                    min_key = k;
+                }
+            }
+ 
+            tmp = array[min_key];
+            array[min_key] = array[j];
+            array[j] = tmp;
+        }
+ 
+        Console.WriteLine("The Array After Selection Sort is: ");
+        for (int i = 0; i < 10; i++)
+        {
+            Console.WriteLine(array[i]);
+        }
+        Console.ReadLine();
+    }
+}
+
+/*
+ * C# Program to Convert a Given Number of Days in terms of 
+ * Years, Weeks & Days
+ */
+using System;
+class program
+{
+    public static void Main()
+    {
+        int ndays, year, week, days, DAYSINWEEK=7;
+        Console.WriteLine("Enter the number of days");
+        ndays = int.Parse(Console.ReadLine());
+        year = ndays / 365;
+        week = (ndays % 365) / DAYSINWEEK;
+        days = (ndays % 365) % DAYSINWEEK;
+        Console.WriteLine("{0} is equivalent to {1}years, {2}weeks and {3}days", ndays, year, week, days);
+        Console.ReadLine();
+    }
+}
+
+/*
+ * C# Program to Covert HexaDecimal Number to Decimal
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+ 
+namespace ConsoleApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string Input;
+            Console.WriteLine("Enter a Hexadecimal Number :");
+            Input = Console.ReadLine();
+            int Output = int.Parse(Input, System.Globalization.NumberStyles.HexNumber);
+            Console.WriteLine("The Decimal value is " + Output);
+            Console.Read();
+        }
+    }
+}
+
+using System; 
+ 
+public class ConvertDigitsToWords
+{   
+  public static void Main()
+  { 
+    int num; 
+    int nextdigit; 
+    int numdigits; 
+    int[] n = new int[20]; 
+ 
+    string[] digits = { "zero", "one", "two", 
+                        "three", "four", "five", 
+                        "six", "seven", "eight", 
+                        "nine" }; 
+ 
+ 
+    Console.WriteLine("Enter the number");
+    num = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Number: " + num); 
+    Console.Write("Number in words: ");    
+    nextdigit = 0; 
+    numdigits = 0; 
+    do 
+    { 
+      nextdigit = num % 10; 
+      n[numdigits] = nextdigit; 
+      numdigits++; 
+      num = num / 10; 
+    } while(num > 0); 
+    numdigits--; 
+    for( ; numdigits >= 0; numdigits--) 
+        Console.Write(digits[n[numdigits]] + " "); 
+    Console.WriteLine();
+    Console.ReadLine();
+  }   
+}
+
+*
+ * C# Program to Display the ATM Transaction
+ */
+using System;
+class program
+{
+    public static void Main()
+    {
+ 
+        int amount = 1000, deposit, withdraw;
+        int choice, pin = 0, x = 0;
+        Console.WriteLine("Enter Your Pin Number ");
+        pin = int.Parse(Console.ReadLine());
+        while (true)
+        {
+            Console.WriteLine("********Welcome to ATM Service**************\n");
+            Console.WriteLine("1. Check Balance\n");
+            Console.WriteLine("2. Withdraw Cash\n");
+            Console.WriteLine("3. Deposit Cash\n");
+            Console.WriteLine("4. Quit\n");
+            Console.WriteLine("*********************************************\n\n");
+            Console.WriteLine("Enter your choice: ");
+            choice = int.Parse(Console.ReadLine());
+            switch (choice)
+            {
+            case 1:
+                Console.WriteLine("\n YOUR BALANCE IN Rs : {0} ", amount);
+                break;
+            case 2:
+                Console.WriteLine("\n ENTER THE AMOUNT TO WITHDRAW: ");
+                withdraw = int.Parse(Console.ReadLine());
+                if (withdraw % 100 != 0)
+                {
+                    Console.WriteLine("\n PLEASE ENTER THE AMOUNT IN MULTIPLES OF 100");
+                }
+                else if (withdraw > (amount - 500))
+                {
+                    Console.WriteLine("\n INSUFFICENT BALANCE");
+                }
+                else
+                {
+                    amount = amount - withdraw;
+                    Console.WriteLine("\n\n PLEASE COLLECT CASH");
+                    Console.WriteLine("\n YOUR CURRENT BALANCE IS {0}", amount);
+                }
+                break;
+            case 3:
+                Console.WriteLine("\n ENTER THE AMOUNT TO DEPOSIT");
+                deposit = int.Parse(Console.ReadLine());
+                amount = amount + deposit;
+                Console.WriteLine("YOUR BALANCE IS {0}", amount);
+                break;
+            case 4:
+                Console.WriteLine("\n THANK U USING ATM");
+            break;
+            }
+        }
+        Console.WriteLine("\n\n THANKS FOR USING OUT ATM SERVICE");
+    }
+ }
+ 
+ linear search
+ using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text; 
+namespace LinerSearch
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] a = new int[100];
+            Console.WriteLine("Enter the number of elements you want to add in the array ?");
+            string s = Console.ReadLine();
+            int x = Int32.Parse(s);
+            Console.WriteLine("-------------------------");
+            Console.WriteLine("\n Enter the array elements \n");
+            for (int i = 0; i < x; i++)
+            {
+                string s1 = Console.ReadLine();
+                a[i] = Int32.Parse(s1);
+            }
+            Console.WriteLine("-------------------------");
+           Console.WriteLine("Enter the Search element\n");
+            string s3 = Console.ReadLine();
+            int x2 = Int32.Parse(s3);
+            for (int i = 0; i < x; i++)
+            {
+                if (a[i] == x2)
+                {
+                    Console.WriteLine("-------------------------");
+                    Console.WriteLine("Search successful");
+                    Console.WriteLine("Element {0} found at location {1}\n", x2, i + 1);
+                    //return;
+                    Console.ReadLine();
+                }
+            }
+            Console.WriteLine("Entered element not found. Search unsuccessful");
+            Console.ReadLine();
+        }
+    }
+} 

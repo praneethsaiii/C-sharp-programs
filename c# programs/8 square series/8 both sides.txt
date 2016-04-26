@@ -1,0 +1,89 @@
+console side
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace WebApplication4
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public string HelloWorld()
+        {
+            return "Hello World";
+        }
+        [WebMethod]
+        public double sq(double n)
+        {
+            double sum=0,a=0;
+            for (int i = 0; i <= n; i++)
+            {
+                sum = sum + (i * i);
+
+            }
+
+            return (sum);
+        }
+        [WebMethod]
+        public double cub(double n)
+        {
+            double sum = 0, a = 0;
+            for (int i = 0; i <= n; i++)
+            {
+                sum = sum + (i * i * i);
+
+            }
+
+            return (sum);
+        }
+    }
+}
+
+customer side console Application
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ConsoleApplication1.WebApplication4;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double sumsq = 0, sumcub = 0;
+            WebService1 wb = new WebService1();
+            Console.WriteLine("enter number to sq:");
+           int a=int.Parse( Console.ReadLine());
+           sumsq=wb.sq(a);
+           sumcub = wb.cub(a);
+           if (sumsq % 2 == 0 || sumcub%2==0)
+           {
+               Console.WriteLine("even");
+               Console.WriteLine("sq is " + wb.sq(a));
+               Console.WriteLine("sq is " + wb.cub(a));
+           }
+           else
+           {
+
+               Console.WriteLine("odd ");
+               Console.WriteLine("sq is " + wb.sq(a));
+               Console.WriteLine("cub is " + wb.cub(a));
+           }
+                       Console.ReadKey();
+        }
+    }
+}

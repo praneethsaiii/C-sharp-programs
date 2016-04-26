@@ -1,0 +1,402 @@
+prg2
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication39
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, n, sum = 0;
+            Console.Write("enter number n");
+            n=int.Parse(Console.ReadLine());
+
+            Console.Write("enter number sum");
+            sum=int.Parse(Console.ReadLine());
+            for (i = 0; i < n; i++)
+            {
+                sum = sum + i;
+            }
+            Console.WriteLine(sum);
+            Console.ReadKey();
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication40
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("enter the 1st  number");
+            int a = int.Parse(Console.ReadLine());
+            Console.Write("enter the 2nd  number");
+            float b = float.Parse(Console.ReadLine());
+            Console.Write("enter the 3rd  number");
+            double c = double.Parse(Console.ReadLine());
+            Console.Write("enter the 4th  number");
+            int d = int.Parse(Console.ReadLine());
+
+            if (a > b && a > c && a > d)
+            {
+                Console.Write("a is greater number");
+            }
+            else if (b > a && b > c && b > d)
+            {
+                Console.Write("b is greater number");
+            }
+            else if (c > a && c > b && c > d)
+            {
+                Console.Write("c is greater number");
+            }
+            else
+            {
+                Console.Write("d is greater number");
+            }
+            Console.ReadKey();
+        }
+
+    }
+}
+
+using System;
+namespace ConsoleApplication40
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("enter the to find odd or even");
+            int a = int.Parse(Console.ReadLine());
+         
+            if (a%2==0)
+            {
+                Console.WriteLine("a is even number");
+            }
+            else
+            {
+                Console.WriteLine("a is odd number");
+            }
+            Console.ReadKey();
+        }
+
+    }
+}
+prg4
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication41
+{
+    class Program
+    {
+       
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter the number to reverse ");
+            int rev = 0;
+            int n = int.Parse(Console.ReadLine());
+            while (n!=0)
+            {
+                rev = rev * 10;
+                rev = rev + n % 10;
+                n = n / 10;
+            }
+            Console.WriteLine(rev);
+            Console.ReadKey();
+        }
+    }
+}
+prg)6
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication42
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a,i, sum = 0,n;
+            Console.Write("enter the number to check armstrong ");
+            
+            a= int.Parse(Console.ReadLine());
+            n = a;
+            while (n != 0)
+            {
+                i= n % 10;
+                sum = sum + (i * i* i);
+                n = n / 10;
+            }
+            if (sum==a)
+            {
+                Console.WriteLine("given Number  is armstrong "+sum);
+            }
+            else
+            {
+
+                Console.WriteLine("given Number  is not  armstrong "+sum);
+            }
+            Console.ReadKey();
+
+        }
+    }
+}
+7)prg 7
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace program7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, j, start, end,flag=0;
+            Console.WriteLine("Enter start and to find the prime numbers between the range ");
+            start=Convert.ToInt32(Console.ReadLine());
+            end = Convert.ToInt32(Console.ReadLine());
+            for(i= start;i<= end;i++)
+            {
+                flag = 0;
+                if (i == 1)
+                    flag = 1;
+
+                for (j=2;j<i;j++)
+                {
+                     
+                    if (i % j == 0)
+                        flag = 1;
+                }
+                if (flag != 1)
+                    Console.WriteLine(i + " ");
+
+            }
+            Console.ReadLine();
+        }
+    }
+}
+prg8
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace program8
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, n1, r, i,sum = 0, f,f1=1;
+            int ch;
+            int f2 = 1,n2,j;
+            double sum2 =1,x;
+            Console.WriteLine("Enter choice ch");
+            ch = (Convert.ToInt32(Console.ReadLine()));
+            switch(ch)
+            {
+                case 1:
+                    Console.WriteLine("Enter a number to fimd the sum of the digits ");
+                    n = Convert.ToInt32(Console.ReadLine());
+                    n1 = n;
+                    while(n1>0)
+                    {
+                        r = n1 % 10;
+                        sum = sum + r;
+                        n1 = n1 / 10;
+                    }
+                    Console.WriteLine("the sum of digits of a number "+n+ "  is  "+sum);
+                    break;
+                case 2:
+                    Console.WriteLine("Enter a number to find the factorial of a number  ");
+                    f = Convert.ToInt32(Console.ReadLine());
+                    for (i=1;i<=f;i++)
+                    {
+                        f1=f1*i;
+                    }
+                    Console.WriteLine("The factorial of a number "+f+" is "+f1 );
+                    break;
+                case 3:
+                    Console.WriteLine("Enter  x:");
+                    x = Double.Parse(Console.ReadLine());
+                    Console.WriteLine("Enter the limit of the sine series ");
+                    n2 = Convert.ToInt32(Console.ReadLine());
+                    x = x * (3.14) / 180;
+                    sum2 = x;
+                    Console.WriteLine("sum2="+sum2);
+                    for(i=2;i<=n2;i++)
+                    {
+                        f2 = 1;
+                        for(j=((2* i)-1);j>=1;j--)
+                        {
+                            f2 = f2 * j;
+                        }
+                        int y = (2 * i) - 1;
+
+                        sum2 = sum2 + ((Math.Pow(-1,y))*((Math.Pow(x,y))))/f2;
+                    }
+                    Console.WriteLine("the sum of sine series is "+sum2);
+                    break;
+            }
+            Console.ReadLine();
+        }
+
+    }
+}
+prg9
+using System;
+/*using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;*/
+
+namespace program9
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            String a;
+            int i;
+            String b ="";
+            Console.WriteLine("Enter a string which you want to encrypt");
+            a = Console.ReadLine();
+            int c, d;
+            for (i = 0; i < a.Length; i++)
+            {
+                if ((a[i] >= 65 && a[i] <= 90) || (a[i] >= 97 && a[i] <= 122))
+                {
+                    c = a[i] + 1;
+                    if((a[i]>=65&&a[i]<=90&&c>90)||(a[i]>=97&&a[i]<=122&&c>122))
+                    {
+                        c = c - 26;
+                    }
+
+                        b += Convert.ToChar(c);
+                }
+
+               
+            }
+                Console.WriteLine("the encrypted string is " +b);
+
+                Console.ReadLine();
+
+
+            }
+        }
+    }
+
+prgs10 (model-1)
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace program10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            String a;
+            int i;
+            Console.WriteLine("Enter a string ");
+            a=Console.ReadLine();
+            char[] vowel=new char[100];
+            char[] consonant = new char[100];
+            int j = 0, k = 0;
+            for (i= 0;i< a.Length;i++)
+            {
+                if ((a[i] >= 65 && a[i] <= 90) || a[i] >= 97 && a[i] <= 122)
+                {
+                    if (a[i] == 'a' || a[i] == 'A' || a[i] == 'e' || a[i] == 'E' || a[i] == 'i' || a[i] == 'I' || a[i] == 'o' || a[i] == 'O' || a[i] == 'u' || a[i] == 'U')
+                    {
+                        // Console.WriteLine("Vowel :");
+                        vowel[j] = a[i];
+                        j++;
+                    }
+                    else
+                    {
+                        //Console.WriteLine("Consonant :");
+                        consonant[k] = a[i];
+                        k++;
+                    }
+                }
+            }
+            Console.WriteLine("Vowels in the string  :"+a);
+            int l1, l2;
+            l1 = j;
+            l2 = k;
+            for (j = 0; j < vowel.Length; j++)
+                Console.Write(vowel[j] + " ");
+            Console.WriteLine();
+            Console.WriteLine("no. of vowels in the string "+a+" is "+l1);
+            Console.WriteLine();
+            Console.WriteLine("Consonants in the string  :"+a);
+            for (k= 0; k <consonant.Length; k++)
+                Console.Write(consonant[k]+"  ");
+            Console.WriteLine();
+            Console.WriteLine("no. of consonant in the string " + a + " is " +l2);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+prg10 model-2
+using System;
+namespace program10
+{
+ class Program
+    {
+    static void Main(string[] args)
+        {
+            String a;
+            int i,vcount=0,ccount=0;
+            Console.WriteLine("Enter a string ");
+            a = Console.ReadLine();
+            for (i = 0; i < a.Length; i++)
+            {
+
+                if (a[i] == 'a' || a[i] == 'A' || a[i] == 'e' || a[i] == 'E' || a[i] == 'i' || a[i] == 'I' || a[i] == 'o' || a[i] == 'O' || a[i] == 'u' || a[i] == 'U')
+                {
+                    Console.WriteLine("vowels are " + a[i]);
+                    Console.WriteLine();  
+                    vcount++;
+                }
+                else
+                {
+                    Console.WriteLine("consotant are " + a[i]);
+                    Console.WriteLine();  
+                    ccount++;                
+                }
+            }
+
+            Console.WriteLine("Number of vowels  in the given string= " + vcount);
+            Console.WriteLine("Number of vowels  in the given string= " + ccount);
+            Console.ReadLine();
+        }
+    }
+}

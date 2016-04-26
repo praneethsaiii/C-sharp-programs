@@ -1,0 +1,108 @@
+//console side
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Services;
+namespace cyc2_con6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            cyc2_web6.WebService1 ob = new cyc2_web6.WebService1();
+            Console.WriteLine("Enter choice 1- reverse , 2- upper , 3- lower , 4- concat ");
+            int ch = int.Parse(Console.ReadLine());
+            switch(ch)
+            {
+                case 1:
+                    Console.WriteLine("Enter a string to find it's reverse");
+                    String a = Console.ReadLine();
+                    Console.WriteLine("Reverse String :"+ob.str_reverse(a));
+                        
+                    break;
+                case 2:
+                    Console.WriteLine("Enter a string to find it's uppercase ");
+                    String b = Console.ReadLine();
+                    Console.WriteLine("Upper Case String :" + ob.to_upper(b));
+                    break;
+                case 3:
+                    Console.WriteLine("Enter a string to find it's lowercase ");
+                    String c = Console.ReadLine();
+                    Console.WriteLine("Lower Case String :" + ob.to_lower(c));
+                    break;
+                case 4:
+                    Console.WriteLine("Enter a to find concatenation  ");
+                    String d = Console.ReadLine();
+                    Console.WriteLine("Enter a to find concatenation  ");
+                    String e = Console.ReadLine();
+                    Console.WriteLine("Concatenated String :" + ob.concat(d,e));
+
+                    break;
+                default:
+                    Console.WriteLine("Invalid Choice ");
+                    break;
+            }
+            Console.ReadLine();
+        }
+    }
+}
+  
+//web side
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace cyc2_web6
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public string str_reverse(String s)
+        {
+           // String s="jeevan";
+            String b="";
+            int i,j=0;
+            for (i=s.Length-1;i>=0;i--)
+            {
+                b+=s[i];
+                j++;
+            }
+            return b;
+        }
+        [WebMethod]
+        public string to_upper(String s)
+        {
+           // String s = "jeevan";
+            s = s.ToUpper();
+            return s;
+        }
+        [WebMethod]
+        public string to_lower(String s)
+        {
+            //String s = "jeevan";
+            s = s.ToLower();
+            return s;
+        }
+        [WebMethod]
+        public string concat(String s, String s1)
+        {
+            //String s = "jeevan";
+            //String s1 = "sai manikanta";
+            String s2 = s+s1;
+            return s2;
+        }
+    }
+}

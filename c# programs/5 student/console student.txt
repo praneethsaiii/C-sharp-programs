@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ConsoleApplication31.WebApplication8;
+namespace ConsoleApplication31
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            WebService1 ws = new WebService1();
+            Console.WriteLine("enter the name of student");
+            String name = Console.ReadLine();
+            Console.WriteLine("enter the reg no");
+            String regno = Console.ReadLine();
+            Console.WriteLine("enter the dob");
+            string dob = Console.ReadLine();
+            Console.WriteLine("enter 5 sub marks");
+            float a = int.Parse(Console.ReadLine());
+            float b = int.Parse(Console.ReadLine());
+            float c = int.Parse(Console.ReadLine());
+            float d = int.Parse(Console.ReadLine());
+            float e = int.Parse(Console.ReadLine());
+            Console.WriteLine("average of marks"+ws.average(a,b,c,d,e));
+            Console.ReadLine();
+        }
+    }
+}

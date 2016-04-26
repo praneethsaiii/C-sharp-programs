@@ -1,0 +1,76 @@
+//calculating commision
+//web application
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace WebApplication13
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public string HelloWorld()
+        {
+            return "Hello World";
+        }
+        [WebMethod]
+        public double com(double s1, double s2, double s3, double s4, double s5)
+        {
+            double a;
+            double commision = 0;
+            a = s1 + s2 + s3 + s4 + s5;
+            if (a <= 5000)
+            {
+                commision = (5 * a) / 100;
+               
+            }
+            else if (a <= 10000 && a > 5000)
+            {
+                commision = (7 * a) / 100;
+               
+            }
+            else if (a > 10000)
+            {
+                commision = (10 * a) / 100;
+               
+            }
+            return commision;
+        }
+    
+    }
+}
+//console application
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ConsoleApplication5.WebApplication13;
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            WebService1 ws = new WebService1();
+            double s1 = int.Parse(Console.ReadLine());
+            double s2 = int.Parse(Console.ReadLine());
+            double s3 = int.Parse(Console.ReadLine());
+            double s4 = int.Parse(Console.ReadLine());
+            double s5 = int.Parse(Console.ReadLine());
+            Console.WriteLine("commision" + ws.com(s1, s2, s3, s4, s5));
+            Console.ReadKey();
+        }
+    }
+}

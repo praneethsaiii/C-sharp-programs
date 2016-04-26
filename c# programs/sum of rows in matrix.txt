@@ -1,0 +1,110 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+namespace WebApplication16
+{
+    /// <summary>
+    /// Summary description for WebService1
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class WebService1 : System.Web.Services.WebService
+    {
+
+        [WebMethod]
+        public string HelloWorld()
+        {
+            return "Hello World";
+        }
+        [WebMethod]
+        public string row_match(int[,] a, int r, int c)
+        {
+            int i, j;
+            int[,] b = new int[r, c];
+            for (i = 0; i < r; i++)
+            {
+                for (j = 0; j < c; j++)
+                {
+                    b[i, j] = a[i, j];
+
+                }
+            }
+            int s1 = 0, s2 = 0, s3 = 0;
+            String m = " ";
+            for (i = 0; i < 1; i++)
+            {
+                for (j = 0; j < c; j++)
+                {
+                    s1 = s1 + a[i, j];
+                }
+            }
+
+            for (i = 1; i < 2; i++)
+            {
+                for (j = 0; j < c; j++)
+                {
+                    s2 = s2 + a[i, j];
+                }
+            }
+            for (i = 2; i < 3; i++)
+            {
+                for (j = 0; j < c; j++)
+                {
+                    s3= s3 + a[i, j];
+                }
+            }
+            m = "sum of 1st row " + s1+"    "+"sum of second row is " + s2 + "       "+" sum of thrid row "+s3+"  ";
+            return m;
+        }
+
+    }
+}
+//console
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication16
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, j;
+            WebApplication16.WebService1 ob = new WebApplication16.WebService1();
+            Console.WriteLine("Enter no. of rows ");
+            int r = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter no. of columns");
+            int c = int.Parse(Console.ReadLine());
+            int[,] a = new int[r, c];
+            Console.WriteLine("Enter matrix elements ");
+            for (i = 0; i < r; i++)
+            {
+                for (j = 0; j < c; j++)
+                {
+                    a[i, j] = int.Parse(Console.ReadLine());
+                }
+
+            }
+            Console.WriteLine(" matrix format of readed values ");
+            for (i = 0; i < r; i++)
+            {
+                for (j = 0; j < c; j++)
+                {
+                    Console.Write(a[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine(ob.row_match(a, r, c));
+            Console.ReadLine();
+        }
+    }
+}

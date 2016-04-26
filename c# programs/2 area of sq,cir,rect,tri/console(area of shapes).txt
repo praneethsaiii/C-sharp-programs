@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ConsoleApplication30.WebApplication7;
+namespace ConsoleApplication30
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            WebService1 webservice = new WebService1();
+            Console.WriteLine("area of circle is:");
+            Console.WriteLine(webservice.circle(5));
+            Console.WriteLine("area of square is:");
+            Console.WriteLine(webservice.square(4));
+            Console.WriteLine("area of rectangle is:");
+            Console.WriteLine(webservice.rectangle(3,2));
+            Console.WriteLine("area of triangle is:");
+            Console.WriteLine(webservice.triangle(2,1));
+            Console.ReadKey();
+        }
+    }
+}
+
+/* (reading values from user)
+Console.WriteLine("enter the A value to find area of circle");
+            float a = int.Parse(Console.ReadLine());
+            Console.WriteLine("area of circle is:");
+            Console.WriteLine(webservice.circle(a)); */

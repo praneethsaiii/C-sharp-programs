@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication9
+{
+    class Program
+    {
+    static bool IsPalindrome(string s)
+        {
+
+            bool palindrome = true;
+
+            for (int i = 0; i < s.Length / 2 + 1; i++)
+            {
+
+                if (s[i] != s[s.Length - i - 1])
+                {
+
+                    palindrome = false;
+
+                    break;
+
+                }
+
+            }
+
+            return palindrome;
+
+        }
+
+
+
+        static void Main(string[] args)
+        {
+
+            Console.Write("Enter a String: ");
+
+            string s = Console.ReadLine();
+
+            if (IsPalindrome(s) == true)
+            {
+
+                Console.WriteLine(s + " is a palindrome");
+                Console.Readkey();
+
+            }
+
+            else
+            {
+
+                Console.WriteLine(s + " is NOT a palindrome");
+                Console.Readkey();
+            }
+        }
+    }
+}
